@@ -1,4 +1,6 @@
-# 🎧 Music Streaming Data Analysis: Spotify & YouTube Engagement
+<p align="center">
+  <img src="images/music_logo.png" alt="Spotify and YouTube Data Analysis Logo" width="400">
+</p># 🎧 Music Streaming Data Analysis: Spotify & YouTube Engagement
 
 This project features a comprehensive SQL analysis of music streaming data, integrating track metrics from Spotify (danceability, energy) with YouTube user engagement data (views, likes, comments).
 
