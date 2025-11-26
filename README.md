@@ -1,5 +1,5 @@
 <p align="center">
-  <img src=""C:\Users\rahul\OneDrive\Pictures\Saved Pictures\Spotify_Full_Logo_RGB_Green.png"" alt="Spotify and YouTube Data Analysis Logo" width="400">
+  <img src="Spotify_Full_Logo_RGB_Green.png" alt="Spotify and YouTube Data Analysis Logo" width="400">
 </p># 🎧 Music Streaming Data Analysis: Spotify & YouTube Engagement
 
 This project features a comprehensive SQL analysis of music streaming data, integrating track metrics from Spotify (danceability, energy) with YouTube user engagement data (views, likes, comments).
