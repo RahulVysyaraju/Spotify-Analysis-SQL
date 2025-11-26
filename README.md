@@ -4,84 +4,67 @@
 
 # 🎧 Music Streaming Data Analysis: Spotify & YouTube Engagement
 
-This project features a comprehensive SQL analysis of music streaming data, integrating track metrics from Spotify (danceability, energy) with YouTube user engagement data (views, likes, comments).
+This project features a comprehensive SQL analysis integrating track metrics from Spotify (audio features) with YouTube user engagement data (views, likes, comments). The analysis progresses from simple aggregation to complex ranking, demonstrating full-spectrum querying capability.
 
-## 🎯 Project Objectives & Analytical Focus
+## 🎯 Analytical Objectives & Project Value
 
-* **Data Sourcing:** Handling and importing data from a flat file (CSV) into a structured relational table.
-* **Advanced Querying:** Demonstration of high-level SQL proficiency using **Window Functions** and **CTEs**.
-* **Engagement Assessment:** Analyzing the relationship between music characteristics (energy, danceability) and commercial popularity.
+* **Advanced Querying:** Demonstrate high-level SQL proficiency using **Window Functions** and **CTEs** to solve complex analytical problems.
+* **Engagement Assessment:** Analyze the correlation between music characteristics (energy, danceability) and commercial popularity (streams, views, likes).
+* **Data Sourcing:** Showcase the ability to handle and import data from a flat file (CSV) into a structured relational table.
 
-## 📁 Repository Contents
+---
+
+## 📁 Repository Contents & Setup
 
 | File Name | Purpose |
 | :--- | :--- |
-| `01_create_schema.sql` | Defines the empty table structure needed for the import. |
-| `spotify_data.csv` | **The raw data source file** necessary for project reproducibility (must be included). |
-| `02_analysis_queries.sql` | Contains all 15 analytical queries (Easy, Medium, Hard). |
+| **`Spotify-Create-Schema.sql`** | Defines the empty table structure (`spotify` table) for the import. |
+| **`Spotify_dataset.csv`** | **The raw data source file** necessary for project reproducibility. |
+| **`Spotify-Analysis-Query.sql`** | Contains all 15 analytical queries (Easy, Medium, Hard). |
+| **`README.md`** | This documentation and setup guide. |
 
-## 💻 Getting Started: Setup and Data Load
+### 💻 Getting Started: Data Load Instructions
 
 To run this project, you must first create the schema and then load the data from the CSV file into the empty `spotify` table.
 
 ### Step 1: Create the Schema
 
-Execute the script in the **`01_create_schema.sql`** file to create the table structure.
+Execute the script in the **`Spotify-Create-Schema.sql`** file to create the table structure.
 
 ### Step 2: Load Data from CSV
 
-Use your SQL client's bulk import command to load the `spotify_data.csv` file into the new `spotify` table.
+Use your SQL client's bulk import command to load the **`Spotify_dataset.csv`** file into the new `spotify` table.
 
-\textbf{⚠️ IMPORT COMMAND DEPENDS ON YOUR SERVER:}
-
-* \textbf{For MySQL/MariaDB:} Use the `LOAD DATA` command (requires local file access):
-    ```sql
-    LOAD DATA LOCAL INFILE 'spotify_data.csv'
-    INTO TABLE spotify
-    FIELDS TERMINATED BY ','
-    IGNORE 1 ROWS;
-    ```
-* \textbf{For PostgreSQL:} Use the `\COPY` command (if using psql terminal):
-    ```sql
-    \COPY spotify FROM 'spotify_data.csv' DELIMITER ',' CSV HEADER;
-    ```
+> \textbf{Note:} The specific command depends on your SQL server (e.g., `LOAD DATA INFILE` for MySQL or `\COPY` for PostgreSQL). Ensure the file path is correct when executing the import command.
 
 ### Step 3: Run Analysis
 
-Execute the queries in **`02_analysis_queries.sql`** to generate all analytical results.
+Execute the queries in **`Spotify-Analysis-Query.sql`** to generate all analytical results.
 
 ---
 
-# 📜 SQL Code Contents
+## 🚀 Key Analytical Questions (02\_analysis\_queries.sql)
 
-## File: `01_create_schema.sql` (Table Definition)
+### Advanced Technical Achievements:
+* Demonstrates use of **Window Functions** (`DENSE_RANK()`, `SUM() OVER`) and **CTEs** (`WITH` clause) for ranking and complex aggregation.
 
-```sql
-DROP TABLE IF EXISTS spotify;
+### Easy Level
+1. Retrieve the names of all tracks that have more than 1 billion streams.
+2. List all albums along with their respective artists.
+3. Get the total number of comments for tracks where licensed = TRUE.
+4. Find all tracks that belong to the album type 'single'.
+5. Count the total number of tracks by each artist.
 
-CREATE TABLE spotify (
-    artist VARCHAR(255),
-    track VARCHAR(255),
-    album VARCHAR(255),
-    album_type VARCHAR(50),
-    danceability FLOAT,
-    energy FLOAT,
-    loudness FLOAT,
-    speechiness FLOAT,
-    acousticness FLOAT,
-    instrumentalness FLOAT,
-    liveness FLOAT,
-    valence FLOAT,
-    tempo FLOAT,
-    duration_min FLOAT,
-    title VARCHAR(255),
-    channel VARCHAR(255),
-    views FLOAT,
-    likes BIGINT,
-    comments BIGINT,
-    licensed BOOLEAN,
-    official_video BOOLEAN,
-    stream BIGINT,
-    energy_liveness FLOAT,
-    most_played_on VARCHAR(50)
-);
+### Medium Level
+6. Calculate the average danceability of tracks in each album.
+7. Find the top 5 tracks with the highest energy values (based on energy\_liveness).
+8. List all tracks along with their views and likes where official\_video = TRUE.
+9. For each album, calculate the total views of all associated tracks.
+10. Retrieve the track names that have been streamed on Spotify more than YouTube.
+
+### Hard Level
+11. Find the top 3 most-viewed tracks for each artist using window functions.
+12. Write a query to find tracks where the liveness score is above the average.
+13. Use a WITH clause to calculate the difference between the highest and lowest energy values for tracks in each album.
+14. Find tracks where the energy-to-liveness ratio is greater than 1.2.
+15. Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.
