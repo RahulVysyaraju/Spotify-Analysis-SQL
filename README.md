@@ -43,7 +43,7 @@ Execute the queries in **`Spotify-Analysis-Query.sql`** to generate all analytic
 
 ---
 
-## 🚀 Key Analytical Questions (02\_analysis\_queries.sql)
+## 🚀 Key Analytical Questions 
 
 ### Advanced Technical Achievements:
 * Demonstrates use of **Window Functions** (`DENSE_RANK()`, `SUM() OVER`) and **CTEs** (`WITH` clause) for ranking and complex aggregation.
